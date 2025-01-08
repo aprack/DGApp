@@ -16,7 +16,7 @@ selected_columns = st.multiselect("Choose flight numbers to filter by:", availab
 filter_values = {}
 
 for column in selected_columns:
-    value = st.number_input(f"Enter the value to filter in {column}:", format="%d")
+    value = st.number_input(f"Enter the value to filter in {column}:", step=0.1, format="%.1f")
     filter_values[column] = value
 
 if st.button("Search"):
