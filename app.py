@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Specify the file path
-file_path = r"C:\Users\Drubert\Documents\pdga-approved-disc-golf-discs_2025-01-08T15-27-01.csv"
+file_path = r"https://github.com/aprack/DGApp/blob/main/pdga-approved-disc-golf-discs_2025-01-08T15-27-01.csv"
 
 try:
     # Read the CSV file
