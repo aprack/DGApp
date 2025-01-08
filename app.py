@@ -16,7 +16,7 @@ selected_columns = st.multiselect("Choose values to filter by:", available_colum
 filter_values = {}
 
 for column in selected_columns:
-    value = st.number_input(f"Enter the number to filter by {column}:")
+    value = st.number_input(f"Filter by {column} #:")
     filter_values[column] = value
 
 if st.button("Search"):
