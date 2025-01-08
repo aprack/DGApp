@@ -10,13 +10,13 @@ available_columns = ['Speed', 'Glide', 'Turn', 'Fade']
 st.title("Disc Flight Number Search")
 
 # Let users select multiple columns to filter by
-selected_columns = st.multiselect("Choose values to filter by:", available_columns)
+selected_columns = st.multiselect("Choose flight numbers to filter by:", available_columns)
 
 # Dictionary to hold user input for each selected column
 filter_values = {}
 
 for column in selected_columns:
-    value = st.number_input(f"Filter by {column} #:")
+    value = st.number_input(f"Filter by {column} number:")
     filter_values[column] = value
 
 if st.button("Search"):
