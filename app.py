@@ -1,27 +1,13 @@
 import pandas as pd
+import streamlit as st
 
-# Specify the file path
-file_path = r"https://github.com/aprack/DGApp/blob/main/pdga-approved-disc-golf-discs_2025-01-08T15-27-01.csv"
+# Load the CSV file
+df = pd.read_csv(r"https://github.com/aprack/DGApp/blob/main/pdga-approved-disc-golf-discs_2025-01-08T15-27-01.csv")
 
-try:
-    # Read the CSV file
-    df = pd.read_csv(file_path)
+st.title("CSV Query App")
+column = st.selectbox("Choose a column to filter:", df.columns)
+value = st.text_input(f"Enter the value to filter in {column}:")
 
-    # Display the first few rows
-    print("\nPreview of the CSV file:")
-    print(df.head())
-
-    # Query the data
-    column = input("\nEnter the column name to filter by: ")
-    value = input(f"Enter the value to search for in '{column}': ")
-
-    # Filter the DataFrame
-    filtered = df[df[column].astype(str).str.contains(value, case=False, na=False)]
-    print(f"\nResults:\n{filtered}")
-
-except FileNotFoundError:
-    print(f"Error: The file at '{file_path}' was not found.")
-except KeyError:
-    print(f"Error: The column name '{column}' does not exist in the CSV.")
-except Exception as e:
-    print(f"An error occurred: {e}")
+if st.button("Search"):
+    results = df[df[column] == value]
+    st.write(results)
