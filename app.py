@@ -6,7 +6,7 @@ df = pd.read_csv(r"https://raw.githubusercontent.com/aprack/DGApp/refs/heads/mai
 
 st.title("CSV Query App")
 column = st.selectbox("Choose a column to filter:", df.columns)
-value = st.text_input(f"Enter the value to filter in {column}:")
+value = st.number_input(f"Enter the value to filter in {column}:")
 
 if st.button("Search"):
     results = df[df[column] == value]
