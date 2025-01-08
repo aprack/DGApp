@@ -9,13 +9,26 @@ available_columns = ['Speed', 'Glide', 'Turn', 'Fade']
 
 st.title("Disc Flight Number Search")
 
-# Update the selectbox to only include the filtered columns
-column = st.selectbox("Choose a column to filter:", available_columns)
+# Let users select multiple columns to filter by
+selected_columns = st.multiselect("Choose columns to filter by:", available_columns)
 
-# Take user input for the chosen column
-value = st.number_input(f"Enter the value to filter in {column}:")
+# Dictionary to hold user input for each selected column
+filter_values = {}
+
+for column in selected_columns:
+    value = st.number_input(f"Enter the value to filter in {column}:")
+    filter_values[column] = value
 
 if st.button("Search"):
-    # Filter the DataFrame based on the selected column and value
-    results = df[df[column] == value]
-    st.write(results)
+    # Start with the full DataFrame
+    filtered_df = df
+    
+    # Apply filters based on user input
+    for column, value in filter_values.items():
+        filtered_df = filtered_df[filtered_df[column] == value]
+    
+    # Show results
+    if filtered_df.empty:
+        st.write("No results found for the given criteria.")
+    else:
+        st.write(filtered_df)
