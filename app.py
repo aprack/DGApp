@@ -4,8 +4,11 @@ import streamlit as st
 # Load the CSV file
 df = pd.read_csv(r"https://raw.githubusercontent.com/aprack/DGApp/refs/heads/main/dgdiscs.csv")
 
-# Filter available columns
+# Ensure the data types of relevant columns are numeric
 available_columns = ['Speed', 'Glide', 'Turn', 'Fade']
+for col in available_columns:
+    if col in df.columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
 
 st.title("Disc Flight Number Search")
 
@@ -29,6 +32,9 @@ if st.button("Search"):
     
     # Restrict the displayed columns to 'Speed', 'Glide', 'Turn', 'Fade'
     filtered_df = filtered_df[available_columns]
+    
+    # Debugging: Check if filtered DataFrame is empty
+    st.write("Filtered DataFrame Preview (Debugging):", filtered_df.head())
     
     # Show results
     if filtered_df.empty:
