@@ -47,7 +47,7 @@ if st.button("Search"):
     if show_all_columns:
         st.write(filtered_df)
     else:
-        filtered_df = filtered_df[selected_columns]
+        filtered_df = filtered_df[available_columns ]
         if filtered_df.empty:
             st.write("No results found for the given criteria.")
         else:
