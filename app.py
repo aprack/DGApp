@@ -15,6 +15,9 @@ st.title("Disc Search")
 # Let users select multiple columns to filter by
 selected_columns = st.multiselect("Choose columns to filter by:", available_columns)
 
+# Add a checkbox for displaying all columns
+show_all_columns = st.checkbox("Show all columns in the results")
+
 # Dictionary to hold user input for each selected column
 filter_values = {}
 
@@ -40,11 +43,12 @@ if st.button("Search"):
             # Text filter (case-insensitive)
             filtered_df = filtered_df[filtered_df[column].str.contains(str(value), case=False, na=False)]
     
-    # Restrict the displayed columns to selected ones
-    filtered_df = filtered_df[available_columns ]
-    
-    # Show results
-    if filtered_df.empty:
-        st.write("No results found for the given criteria.")
-    else:
+    # Display either all columns or only selected columns
+    if show_all_columns:
         st.write(filtered_df)
+    else:
+        filtered_df = filtered_df[selected_columns]
+        if filtered_df.empty:
+            st.write("No results found for the given criteria.")
+        else:
+            st.write(filtered_df)
