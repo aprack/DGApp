@@ -10,7 +10,7 @@ for col in ['Speed', 'Glide', 'Turn', 'Fade']:
     if col in df.columns:
         df[col] = pd.to_numeric(df[col], errors='coerce')
 
-st.title("Disc Flight Number and Text Search")
+st.title("Disc Search")
 
 # Let users select multiple columns to filter by
 selected_columns = st.multiselect("Choose columns to filter by:", available_columns)
