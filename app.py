@@ -5,7 +5,7 @@ import streamlit as st
 df = pd.read_csv(r"https://raw.githubusercontent.com/aprack/DGApp/refs/heads/main/dgdiscs.csv")
 
 # Ensure the data types of relevant columns are numeric
-available_columns = ['Speed', 'Glide', 'Turn', 'Fade']
+available_columns = ['Company', 'Disc', 'Speed', 'Glide', 'Turn', 'Fade']
 for col in available_columns:
     if col in df.columns:
         df[col] = pd.to_numeric(df[col], errors='coerce')
