@@ -27,6 +27,9 @@ if st.button("Search"):
     for column, value in filter_values.items():
         filtered_df = filtered_df[filtered_df[column] == value]
     
+    # Restrict the displayed columns to 'Speed', 'Glide', 'Turn', 'Fade'
+    filtered_df = filtered_df[available_columns]
+    
     # Show results
     if filtered_df.empty:
         st.write("No results found for the given criteria.")
