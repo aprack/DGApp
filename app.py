@@ -41,7 +41,7 @@ if st.button("Search"):
             filtered_df = filtered_df[filtered_df[column].str.contains(str(value), case=False, na=False)]
     
     # Restrict the displayed columns to selected ones
-    filtered_df = filtered_df[selected_columns]
+    filtered_df = filtered_df[available_columns ]
     
     # Show results
     if filtered_df.empty:
