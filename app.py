@@ -16,7 +16,7 @@ st.title("Disc Search")
 selected_columns = st.multiselect("Choose columns to filter by:", available_columns)
 
 # Add a checkbox for displaying all columns
-show_all_columns = st.checkbox("Show all columns in the results")
+show_all_columns = st.checkbox("Show PDGA Approved Specs")
 
 # Dictionary to hold user input for each selected column
 filter_values = {}
