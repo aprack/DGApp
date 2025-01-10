@@ -45,10 +45,12 @@ if st.button("Search"):
     
     # Display either all columns or only selected columns
     if show_all_columns:
-        st.write(filtered_df)
+        filtered_df_to_display = filtered_df.reset_index(drop=True)
+        st.write(filtered_df_to_display)
     else:
-        filtered_df = filtered_df[available_columns ]
+        filtered_df = filtered_df[available_columns]
         if filtered_df.empty:
             st.write("No results found for the given criteria.")
         else:
-            st.write(filtered_df)
+            filtered_df_to_display = filtered_df.reset_index(drop=True)
+            st.write(filtered_df_to_display)
