@@ -43,6 +43,9 @@ if st.button("Search"):
             # Text filter (case-insensitive)
             filtered_df = filtered_df[filtered_df[column].str.contains(str(value), case=False, na=False)]
     
+    # Sort results by 'Company'
+    filtered_df = filtered_df.sort_values(by='Company', ascending=True)
+    
     # Display either all columns or only selected columns
     if show_all_columns:
         filtered_df_to_display = filtered_df.reset_index(drop=True)
